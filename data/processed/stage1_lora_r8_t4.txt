@@ -1,0 +1,25 @@
+Stage 1 LoRA rank 8. The test split was not read.
+The rank-4 ladder run scored validation macro-F1 0.9021 at epoch 2.
+The only change is the rank. Alpha equals the rank.
+Device: Tesla T4
+Runtime: Kaggle
+Encoder: frozen. LoRA updates query and value. The classifier is trained.
+LoRA rank: 8
+LoRA alpha: 8
+LoRA dropout: 0.1
+Trainable parameters: 888580
+Total parameters: 278935304
+Learning rate: 0.0001
+Weight decay: 0.01
+Batch size: 32
+Epochs completed: 2
+Best epoch: 2
+Validation macro-F1: 0.9042
+Epoch 1: mean loss 0.3777, validation macro-F1 0.9000
+Epoch 2: mean loss 0.2793, validation macro-F1 0.9042
+Seconds: 618.8
+Peak memory: 1931.9MB GPU
+Checkpoint: HammadHARahim/urdu-headline-stage1-lora-r8
+The Hub repo is private. The training corpus is non-commercial research.
+This score beat the rank-4 ladder score of 0.9021.
+It did not beat the kept full-model score of 0.9466.

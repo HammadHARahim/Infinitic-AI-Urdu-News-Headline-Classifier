@@ -1,0 +1,58 @@
+Stage 1 LoRA rank 8 for 30 epochs. The test split was not read.
+The 2-epoch rank-8 run scored validation macro-F1 0.9042 at epoch 2.
+This run uses the same settings and starts from a new adapter.
+Device: Tesla T4
+Runtime: Kaggle
+Encoder: frozen. LoRA updates query and value. The classifier is trained.
+LoRA rank: 8
+LoRA alpha: 8
+LoRA dropout: 0.1
+Trainable parameters: 888580
+Total parameters: 278935304
+Learning rate: 0.0001
+Weight decay: 0.01
+Batch size: 32
+Epoch cap: 30
+Epochs completed: 30
+Best epoch: 26
+Validation macro-F1: 0.9377
+Epoch 1: mean loss 0.3777, validation macro-F1 0.9000
+Epoch 2: mean loss 0.2793, validation macro-F1 0.9042
+Epoch 3: mean loss 0.2513, validation macro-F1 0.9160
+Epoch 4: mean loss 0.2326, validation macro-F1 0.9185
+Epoch 5: mean loss 0.2190, validation macro-F1 0.9216
+Epoch 6: mean loss 0.2067, validation macro-F1 0.9254
+Epoch 7: mean loss 0.1981, validation macro-F1 0.9273
+Epoch 8: mean loss 0.1891, validation macro-F1 0.9293
+Epoch 9: mean loss 0.1819, validation macro-F1 0.9287
+Epoch 10: mean loss 0.1768, validation macro-F1 0.9276
+Epoch 11: mean loss 0.1714, validation macro-F1 0.9299
+Epoch 12: mean loss 0.1641, validation macro-F1 0.9294
+Epoch 13: mean loss 0.1597, validation macro-F1 0.9338
+Epoch 14: mean loss 0.1554, validation macro-F1 0.9310
+Epoch 15: mean loss 0.1523, validation macro-F1 0.9331
+Epoch 16: mean loss 0.1476, validation macro-F1 0.9350
+Epoch 17: mean loss 0.1456, validation macro-F1 0.9353
+Epoch 18: mean loss 0.1409, validation macro-F1 0.9347
+Epoch 19: mean loss 0.1367, validation macro-F1 0.9369
+Epoch 20: mean loss 0.1353, validation macro-F1 0.9343
+Epoch 21: mean loss 0.1324, validation macro-F1 0.9334
+Epoch 22: mean loss 0.1291, validation macro-F1 0.9339
+Epoch 23: mean loss 0.1274, validation macro-F1 0.9357
+Epoch 24: mean loss 0.1235, validation macro-F1 0.9350
+Epoch 25: mean loss 0.1228, validation macro-F1 0.9377
+Epoch 26: mean loss 0.1193, validation macro-F1 0.9377
+Epoch 27: mean loss 0.1180, validation macro-F1 0.9374
+Epoch 28: mean loss 0.1136, validation macro-F1 0.9367
+Epoch 29: mean loss 0.1126, validation macro-F1 0.9359
+Epoch 30: mean loss 0.1103, validation macro-F1 0.9360
+Seconds: 10216.4
+Peak memory: 1931.9MB GPU
+Checkpoint: outputs/stage1-lora-r8-30
+Hugging Face repo: HammadHARahim/urdu-headline-stage1-lora-r8-30
+The Hub repo is private. The training corpus is non-commercial research.
+
+Best validation point: epoch 26, validation macro-F1 0.9377.
+This beat the 2-epoch rank-8 score of 0.9042.
+It did not beat the long rank-4 score of 0.9395 or the kept full-model score of 0.9466.
+The adapter is on HammadHARahim/urdu-headline-stage1-lora-r8-30.

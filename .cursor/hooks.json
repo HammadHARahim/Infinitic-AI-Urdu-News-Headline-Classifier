@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "command": ".cursor/hooks/session-start.py",
+        "timeout": 10
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "type": "command",
+        "command": ".cursor/hooks/validate-edited-file.py",
+        "timeout": 20,
+        "failClosed": false
+      }
+    ]
+  }
+}

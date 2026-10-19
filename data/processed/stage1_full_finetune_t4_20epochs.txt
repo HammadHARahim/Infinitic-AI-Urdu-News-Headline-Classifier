@@ -1,0 +1,25 @@
+Stage 1 full fine-tune on a T4 for 20 epochs. The test split was not read.
+Device: Tesla T4
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Learning rate: 2e-05
+Batch size: 32
+Epochs completed: 5
+Best epoch: 3
+Validation macro-F1: 0.9416
+Epoch 1: mean loss 0.2700, validation macro-F1 0.9293
+Epoch 2: mean loss 0.1675, validation macro-F1 0.9299
+Epoch 3: mean loss 0.1343, validation macro-F1 0.9416
+Epoch 4: mean loss 0.0943, validation macro-F1 0.9323
+Epoch 5: mean loss 0.0704, validation macro-F1 0.9354
+Seconds through epoch 3: 2270.6
+Peak memory: 5354.9MB GPU
+Checkpoint: HammadHARahim/urdu-headline-stage1-full-t4-20epochs
+Hugging Face repo: https://huggingface.co/HammadHARahim/urdu-headline-stage1-full-t4-20epochs
+The Hub repo is private. The training corpus is non-commercial research.
+The script time budget was 230 minutes. Training had run for 2270.6 seconds when epoch 3 was saved.
+A resumed T4 then finished epochs 4 and 5. Google closed that session during epoch 6.
+The resume checkpoint after epoch 5 includes the Adam state.
+Epochs 6 through 20 were not scored.
+The account balance was 0.00 compute units, and the live session was metered at 1.07 units per hour.

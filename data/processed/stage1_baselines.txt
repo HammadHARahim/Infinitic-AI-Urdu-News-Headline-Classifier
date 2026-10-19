@@ -1,0 +1,5 @@
+Stage 1 baselines. Scores are validation macro-F1. The test split was not read.
+Training majority label: sports
+Majority baseline validation macro-F1: 0.1437
+TF-IDF plus logistic regression validation macro-F1: 0.9230
+TF-IDF fit and score seconds: 18.1

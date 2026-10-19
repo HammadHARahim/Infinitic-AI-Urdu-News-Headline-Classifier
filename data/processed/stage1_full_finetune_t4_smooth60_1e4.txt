@@ -1,0 +1,19 @@
+Stage 1 full fine-tune from xlm-roberta-base at learning rate 1e-4.
+The test split was not read.
+Label smoothing 0.1. Weight decay 0.01. Batch size 32.
+Every parameter was trained.
+Runtime: Kaggle
+Device: Tesla T4
+One of the two attached T4 chips was used.
+Epochs scored: 5
+Best epoch: 1
+Best validation macro-F1: 0.1437
+Epoch 1: mean loss 1.1495, validation macro-F1 0.1437
+Epoch 2: mean loss 1.2837, validation macro-F1 0.1437
+Epoch 3: mean loss 1.2826, validation macro-F1 0.1437
+Epoch 4: mean loss 1.2815, validation macro-F1 0.1437
+Epoch 5: mean loss 1.2808, validation macro-F1 0.1437
+The score matches the majority baseline. The model predicted sports for every headline.
+The run was stopped during epoch 6.
+The collapsed weight file was deleted.
+The kept checkpoint remains epoch 19 at 0.9466 on HammadHARahim/urdu-headline-stage1-warmup.

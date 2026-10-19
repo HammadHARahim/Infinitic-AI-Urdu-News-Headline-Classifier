@@ -1,0 +1,19 @@
+Stage 1 smoke test on one training batch. Validation and test were not read.
+Device: Tesla T4
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Learning rate: 0.0002
+Batch size: 4
+Steps before save: 23
+Loss before save: 0.0600
+Batch accuracy before save: 1.00
+One batch overfit: True
+Loss after resume step: 0.0320
+Batch accuracy after resume: 1.00
+Save and resume: True
+Seconds: 43.2
+Peak memory: 6383.4MB GPU
+Checkpoint: outputs/stage1-smoke/checkpoint.pt
+Checkpoint bytes on the T4: 3336815093
+Checkpoint copy: Colab returned HTTP 500 while downloading that file. The local outputs/stage1-smoke/checkpoint.pt file is the earlier CPU checkpoint.

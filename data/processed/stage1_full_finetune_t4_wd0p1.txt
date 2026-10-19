@@ -1,0 +1,35 @@
+Stage 1 full fine-tune on a Kaggle T4. Epoch 5 onward uses weight decay 0.1.
+The test split was not read.
+Epochs 1 to 3 were trained at learning rate 2e-5 and weight decay 0.01.
+Epoch 4 was trained at learning rate 5e-6 and weight decay 0.01. Its validation macro-F1 is 0.9449.
+Runtime: Kaggle
+Device: Tesla T4
+One of the two attached T4 chips was used. Batch size stayed 32.
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Learning rate from epoch 5: 5e-6
+Weight decay from epoch 5: 0.1
+Epochs scored at weight decay 0.1: 15
+Best epoch of this run: 19
+Best validation macro-F1 of this run: 0.9407
+Epoch 5: mean loss 0.0308, validation macro-F1 0.9404
+Epoch 6: mean loss 0.0434, validation macro-F1 0.9404
+Epoch 7: mean loss 0.0280, validation macro-F1 0.9400
+Epoch 8: mean loss 0.0532, validation macro-F1 0.9398
+Epoch 9: mean loss 0.0419, validation macro-F1 0.9378
+Epoch 10: mean loss 0.0352, validation macro-F1 0.9375
+Epoch 11: mean loss 0.0302, validation macro-F1 0.9357
+Epoch 12: mean loss 0.0263, validation macro-F1 0.9356
+Epoch 13: mean loss 0.0231, validation macro-F1 0.9376
+Epoch 14: mean loss 0.0209, validation macro-F1 0.9401
+Epoch 15: mean loss 0.0191, validation macro-F1 0.9401
+Epoch 16: mean loss 0.0175, validation macro-F1 0.9383
+Epoch 17: mean loss 0.0164, validation macro-F1 0.9382
+Epoch 18: mean loss 0.0137, validation macro-F1 0.9402
+Epoch 19: mean loss 0.0132, validation macro-F1 0.9407
+Epochs 5 to 19 did not beat 0.9449.
+The resume upload after epoch 19 failed: private storage limit reached on HammadHARahim.
+Kaggle marked the notebook as an error. GPU time used: 2.94 hours.
+The kept weights remain epoch 4 on HammadHARahim/urdu-headline-stage1-lr5e6.
+The weight-decay Hub repo was deleted after these scores were copied to data/processed/hub_logs.

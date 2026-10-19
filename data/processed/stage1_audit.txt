@@ -1,0 +1,19 @@
+Stage 1 audit of data/raw/urdu-news-dataset-1M.csv
+The published file ends in the middle of the last row. That incomplete row was left out.
+Headline column exists: True
+Rows in the file: 111860
+Rows with an empty headline: 0
+Rows with an unmapped category: 0
+Rows kept for the split: 111860
+
+Source category counts:
+Sports: 44829
+Entertainment: 34901
+Business & Economics: 24131
+Science & Technology: 7999
+
+Project label counts for kept rows:
+sports: 44829
+entertainment: 34901
+business: 24131
+technology: 7999

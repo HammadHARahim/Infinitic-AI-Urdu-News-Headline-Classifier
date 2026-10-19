@@ -1,0 +1,17 @@
+Stage 1 smoke test on one training batch. Validation and test were not read.
+Device: cpu
+Encoder: frozen. Only the new classifier was updated.
+Trainable parameters: 593668
+Total parameters: 278046724
+Learning rate: 0.01
+Batch size: 4
+Steps before save: 16
+Loss before save: 0.0747
+Batch accuracy before save: 1.00
+One batch overfit: True
+Loss after resume step: 0.1076
+Batch accuracy after resume: 1.00
+Save and resume: True
+Seconds: 6.4
+Peak memory MB: 2837.6
+Checkpoint: outputs/stage1-smoke/checkpoint.pt

@@ -1,0 +1,40 @@
+# Secrets and local credentials
+.env
+.env.*
+**/hf_token
+**/credentials.json
+**/credentials.*
+.kaggle/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.pyc
+
+# Large local data and checkpoints (rebuild or download; do not push)
+data/raw/
+data/processed/*.csv
+data/processed/hub_logs/
+outputs/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+*.onnx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Temporary training staging
+/tmp/
+*.log

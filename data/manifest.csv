@@ -1,0 +1,2 @@
+file_path,file_name,size_bytes,download_date,kaggle_url,mendeley_doi,license_file,kaggle_license_label
+data/raw/urdu-news-dataset-1M.csv,urdu-news-dataset-1M.csv,276791832,2026-10-13,https://www.kaggle.com/datasets/saurabhshahane/urdu-news-dataset,10.17632/834vsxnb99.3,data/licenses/urdu_news_dataset_1m.md,CC BY 4.0

@@ -1,0 +1,15 @@
+---
+description: Route non-trivial work through project skills
+alwaysApply: true
+---
+
+Before non-trivial technical work:
+
+1. Use `.cursor/skills/using-agent-skills/SKILL.md` to select the matching
+   engineering workflow.
+2. For dataset, tokenizer, training, evaluation, or model-documentation work,
+   also follow `.cursor/skills/urdu-headline-model-development/SKILL.md`.
+3. When writing or editing Python or notebooks, follow
+   `.cursor/skills/intermediate-programmer-code/SKILL.md`.
+4. Work phase by phase and verify the current gate before moving forward.
+5. Prefer measured artifacts over unsupported claims.

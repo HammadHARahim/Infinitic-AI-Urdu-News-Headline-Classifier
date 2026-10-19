@@ -1,0 +1,27 @@
+Stage 1 full fine-tune on a Kaggle T4. Epoch 5 onward uses class-weighted loss.
+The test split was not read.
+Epochs 1 to 4 used unweighted cross-entropy.
+Epoch 4 is the checkpoint this run starts from. Its validation macro-F1 is 0.9449.
+Runtime: Kaggle
+Device: Tesla T4
+One of the two attached T4 chips was used. Batch size stayed 32.
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Learning rate from epoch 5: 5e-6
+Weight decay from epoch 5: 0.01
+Loss from epoch 5: inverse-frequency class weights
+Class weights: sports 0.6246; business 1.1569; entertainment 0.8018; technology 3.4791
+Validation F1 by label before epoch 5: sports 0.9746; business 0.9676; entertainment 0.9438; technology 0.8937
+Epochs scored with class-weighted loss: 5
+Best epoch of this run: 5
+Best validation macro-F1 of this run: 0.9430
+Epoch 5: mean loss 0.0368, validation macro-F1 0.9430
+Epoch 6: mean loss 0.0522, validation macro-F1 0.9408
+Epoch 7: mean loss 0.0347, validation macro-F1 0.9403
+Epoch 8: mean loss 0.0642, validation macro-F1 0.9389
+Epoch 9: mean loss 0.0522, validation macro-F1 0.9381
+Epochs 5 to 9 did not beat 0.9449.
+The run was stopped during epoch 10.
+Score records are on HammadHARahim/urdu-headline-stage1-classweight. No new weight file was uploaded.
+The kept weights remain epoch 4 on HammadHARahim/urdu-headline-stage1-lr5e6.

@@ -1,0 +1,25 @@
+Stage 1 full fine-tune on a T4. Epoch 4 onward uses learning rate 5e-6.
+The test split was not read.
+Epochs 1 to 3 were trained at learning rate 2e-5. Their best validation macro-F1 is 0.9416.
+Device: Tesla T4
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Learning rate from epoch 4: 5e-6
+Weight decay: 0.01
+Batch size: 32
+Epochs scored at 5e-6: 9
+Best epoch: 4
+Validation macro-F1: 0.9449
+Epoch 4: mean loss 0.0721, validation macro-F1 0.9449
+Epoch 5: mean loss 0.0480, validation macro-F1 0.9402
+Epoch 6: mean loss 0.0324, validation macro-F1 0.9396
+Epoch 7: mean loss 0.0579, validation macro-F1 0.9395
+Epoch 8: mean loss 0.0468, validation macro-F1 0.9409
+Epoch 9: mean loss 0.0395, validation macro-F1 0.9412
+Epoch 10: mean loss 0.0345, validation macro-F1 0.9387
+Epoch 11: mean loss 0.0288, validation macro-F1 0.9386
+Epoch 12: mean loss 0.0268, validation macro-F1 0.9378
+Epoch 4 beat 0.9416. Epochs 5 to 12 did not beat 0.9449.
+Stopped during epoch 13 so weight decay can change.
+Weights for epoch 4 are on HammadHARahim/urdu-headline-stage1-lr5e6.

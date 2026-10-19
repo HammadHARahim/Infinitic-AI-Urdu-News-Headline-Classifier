@@ -1,0 +1,15 @@
+Stage 1 LoRA rank 4. The test split was not read.
+Device: Tesla T4
+Encoder: frozen. LoRA updates query and value. The classifier is trained.
+LoRA rank: 4
+LoRA alpha: 4
+Trainable parameters: 741124
+Total parameters: 278787848
+Learning rate: 0.0001
+Batch size: 32
+Epochs completed: 2
+Best epoch: 2
+Validation macro-F1: 0.9021
+Seconds: 651.3
+Peak memory: 1929.6MB GPU
+Checkpoint: outputs/stage1-lora-r4

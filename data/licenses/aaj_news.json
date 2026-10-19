@@ -1,0 +1,9 @@
+{
+  "publisher_name": "Aaj News",
+  "grant_date": "12-10-2026",
+  "urdu_site_url": null,
+  "classifier_storage_permission_sentence": "Good Luck",
+  "verification_status": "originally_granted",
+  "synthetic_test_document": false,
+  "note": "we don't allow url verification evidence as it is vulnerable to robot.txt"
+}

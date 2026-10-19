@@ -1,0 +1,6 @@
+Stage 1 tokenizer check on validation headlines only. The test split was not read.
+Tokenizer: xlm-roberta-base
+Validation headlines measured: 11071
+Share of headlines containing an unknown token: 0.0000
+Mean subword tokens per word: 1.4188
+Mean subword tokens per headline: 15.1764

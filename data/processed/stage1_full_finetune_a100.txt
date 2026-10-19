@@ -1,0 +1,14 @@
+Stage 1 full fine-tune. The test split was not read.
+Device: NVIDIA A100-SXM4-40GB
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Learning rate: 2e-05
+Batch size: 32
+Epochs completed: 2
+Best epoch: 2
+Validation macro-F1: 0.9257
+Seconds: 347.4
+Peak memory: 5358.5MB GPU
+Checkpoint: outputs/stage1-full-a100
+Checkpoint copy: config.json was downloaded. The 1.1 GB weight file was still transferring when the A100 session was stopped. Those weights are not on this computer.

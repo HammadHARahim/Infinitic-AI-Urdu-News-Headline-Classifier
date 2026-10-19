@@ -1,0 +1,17 @@
+{
+  "id": "hammadrahim/stage1-smooth60",
+  "title": "stage1-smooth60",
+  "code_file": "run_smooth60.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "hammadrahim/stage1-wd0p1-files"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

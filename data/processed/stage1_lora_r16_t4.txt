@@ -1,0 +1,25 @@
+Stage 1 LoRA rank 16. The test split was not read.
+The rank-4 ladder run scored 0.9021. The rank-8 ladder run scored 0.9042.
+The only change is the rank. Alpha equals the rank.
+Device: Tesla T4
+Runtime: Kaggle
+Encoder: frozen. LoRA updates query and value. The classifier is trained.
+LoRA rank: 16
+LoRA alpha: 16
+LoRA dropout: 0.1
+Trainable parameters: 1183492
+Total parameters: 279230216
+Learning rate: 0.0001
+Weight decay: 0.01
+Batch size: 32
+Epochs completed: 2
+Best epoch: 2
+Validation macro-F1: 0.9120
+Epoch 1: mean loss 0.3585, validation macro-F1 0.9036
+Epoch 2: mean loss 0.2619, validation macro-F1 0.9120
+Seconds: 687.0
+Peak memory: 1936.6MB GPU
+Checkpoint: HammadHARahim/urdu-headline-stage1-lora-r16
+The Hub repo is private. The training corpus is non-commercial research.
+This score beat the rank-4 ladder score of 0.9021 and the rank-8 ladder score of 0.9042.
+It did not beat the kept full-model score of 0.9466.

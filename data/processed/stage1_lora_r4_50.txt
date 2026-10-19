@@ -1,0 +1,129 @@
+Stage 1 LoRA rank 4 through epoch 100. The test split was not read.
+The settings match the run that scored 0.9377 at epoch 30.
+Epochs 1 to 50 scored 0.9394 at epoch 50. Later epochs continue that adapter.
+Device: Tesla T4
+Runtime: Kaggle
+Encoder: frozen. LoRA updates query and value. The classifier is trained.
+LoRA rank: 4
+LoRA alpha: 4
+LoRA dropout: 0.1
+Label smoothing: 0.1
+Trainable parameters: 741124
+Total parameters: 278787848
+Learning rate: 0.0001
+Weight decay: 0.01
+Batch size: 32
+Epoch cap: 100
+Epochs completed: 100
+Best epoch: 56
+Validation macro-F1: 0.9395
+Epoch 1: mean loss 0.6309, validation macro-F1 0.8960
+Epoch 2: mean loss 0.5548, validation macro-F1 0.9002
+Epoch 3: mean loss 0.5351, validation macro-F1 0.9115
+Epoch 4: mean loss 0.5218, validation macro-F1 0.9123
+Epoch 5: mean loss 0.5121, validation macro-F1 0.9177
+Epoch 6: mean loss 0.5039, validation macro-F1 0.9236
+Epoch 7: mean loss 0.4984, validation macro-F1 0.9241
+Epoch 8: mean loss 0.4929, validation macro-F1 0.9240
+Epoch 9: mean loss 0.4882, validation macro-F1 0.9258
+Epoch 10: mean loss 0.4842, validation macro-F1 0.9262
+Epoch 11: mean loss 0.4801, validation macro-F1 0.9285
+Epoch 12: mean loss 0.4751, validation macro-F1 0.9312
+Epoch 13: mean loss 0.4728, validation macro-F1 0.9305
+Epoch 14: mean loss 0.4690, validation macro-F1 0.9283
+Epoch 15: mean loss 0.4671, validation macro-F1 0.9305
+Epoch 16: mean loss 0.4644, validation macro-F1 0.9327
+Epoch 17: mean loss 0.4628, validation macro-F1 0.9342
+Epoch 18: mean loss 0.4598, validation macro-F1 0.9357
+Epoch 19: mean loss 0.4577, validation macro-F1 0.9333
+Epoch 20: mean loss 0.4563, validation macro-F1 0.9311
+Epoch 21: mean loss 0.4550, validation macro-F1 0.9319
+Epoch 22: mean loss 0.4541, validation macro-F1 0.9319
+Epoch 23: mean loss 0.4516, validation macro-F1 0.9337
+Epoch 24: mean loss 0.4502, validation macro-F1 0.9362
+Epoch 25: mean loss 0.4488, validation macro-F1 0.9326
+Epoch 26: mean loss 0.4482, validation macro-F1 0.9350
+Epoch 27: mean loss 0.4462, validation macro-F1 0.9349
+Epoch 28: mean loss 0.4446, validation macro-F1 0.9339
+Epoch 29: mean loss 0.4433, validation macro-F1 0.9328
+Epoch 30: mean loss 0.4420, validation macro-F1 0.9377
+Epoch 31: mean loss 0.4410, validation macro-F1 0.9338
+Epoch 32: mean loss 0.4404, validation macro-F1 0.9356
+Epoch 33: mean loss 0.4388, validation macro-F1 0.9324
+Epoch 34: mean loss 0.4374, validation macro-F1 0.9323
+Epoch 35: mean loss 0.4366, validation macro-F1 0.9350
+Epoch 36: mean loss 0.4359, validation macro-F1 0.9383
+Epoch 37: mean loss 0.4338, validation macro-F1 0.9361
+Epoch 38: mean loss 0.4340, validation macro-F1 0.9360
+Epoch 39: mean loss 0.4329, validation macro-F1 0.9363
+Epoch 40: mean loss 0.4320, validation macro-F1 0.9357
+Epoch 41: mean loss 0.4314, validation macro-F1 0.9375
+Epoch 42: mean loss 0.4300, validation macro-F1 0.9357
+Epoch 43: mean loss 0.4296, validation macro-F1 0.9353
+Epoch 44: mean loss 0.4293, validation macro-F1 0.9364
+Epoch 45: mean loss 0.4290, validation macro-F1 0.9359
+Epoch 46: mean loss 0.4278, validation macro-F1 0.9337
+Epoch 47: mean loss 0.4260, validation macro-F1 0.9355
+Epoch 48: mean loss 0.4270, validation macro-F1 0.9359
+Epoch 49: mean loss 0.4251, validation macro-F1 0.9352
+Epoch 50: mean loss 0.4243, validation macro-F1 0.9394
+Epoch 51: mean loss 0.4248, validation macro-F1 0.9356
+Epoch 52: mean loss 0.4249, validation macro-F1 0.9360
+Epoch 53: mean loss 0.4230, validation macro-F1 0.9355
+Epoch 54: mean loss 0.4208, validation macro-F1 0.9365
+Epoch 55: mean loss 0.4213, validation macro-F1 0.9361
+Epoch 56: mean loss 0.4202, validation macro-F1 0.9395
+Epoch 57: mean loss 0.4194, validation macro-F1 0.9357
+Epoch 58: mean loss 0.4185, validation macro-F1 0.9373
+Epoch 59: mean loss 0.4203, validation macro-F1 0.9382
+Epoch 60: mean loss 0.4177, validation macro-F1 0.9373
+Epoch 61: mean loss 0.4178, validation macro-F1 0.9366
+Epoch 62: mean loss 0.4168, validation macro-F1 0.9345
+Epoch 63: mean loss 0.4169, validation macro-F1 0.9353
+Epoch 64: mean loss 0.4159, validation macro-F1 0.9356
+Epoch 65: mean loss 0.4164, validation macro-F1 0.9360
+Epoch 66: mean loss 0.4163, validation macro-F1 0.9368
+Epoch 67: mean loss 0.4158, validation macro-F1 0.9368
+Epoch 68: mean loss 0.4152, validation macro-F1 0.9367
+Epoch 69: mean loss 0.4146, validation macro-F1 0.9358
+Epoch 70: mean loss 0.4129, validation macro-F1 0.9379
+Epoch 71: mean loss 0.4126, validation macro-F1 0.9340
+Epoch 72: mean loss 0.4121, validation macro-F1 0.9386
+Epoch 73: mean loss 0.4123, validation macro-F1 0.9370
+Epoch 74: mean loss 0.4119, validation macro-F1 0.9373
+Epoch 75: mean loss 0.4109, validation macro-F1 0.9390
+Epoch 76: mean loss 0.4108, validation macro-F1 0.9367
+Epoch 77: mean loss 0.4109, validation macro-F1 0.9361
+Epoch 78: mean loss 0.4101, validation macro-F1 0.9360
+Epoch 79: mean loss 0.4093, validation macro-F1 0.9350
+Epoch 80: mean loss 0.4096, validation macro-F1 0.9359
+Epoch 81: mean loss 0.4085, validation macro-F1 0.9370
+Epoch 82: mean loss 0.4083, validation macro-F1 0.9349
+Epoch 83: mean loss 0.4084, validation macro-F1 0.9387
+Epoch 84: mean loss 0.4082, validation macro-F1 0.9338
+Epoch 85: mean loss 0.4076, validation macro-F1 0.9360
+Epoch 86: mean loss 0.4072, validation macro-F1 0.9359
+Epoch 87: mean loss 0.4074, validation macro-F1 0.9335
+Epoch 88: mean loss 0.4077, validation macro-F1 0.9345
+Epoch 89: mean loss 0.4069, validation macro-F1 0.9336
+Epoch 90: mean loss 0.4073, validation macro-F1 0.9335
+Epoch 91: mean loss 0.4055, validation macro-F1 0.9347
+Epoch 92: mean loss 0.4060, validation macro-F1 0.9383
+Epoch 93: mean loss 0.4049, validation macro-F1 0.9356
+Epoch 94: mean loss 0.4053, validation macro-F1 0.9362
+Epoch 95: mean loss 0.4049, validation macro-F1 0.9370
+Epoch 96: mean loss 0.4037, validation macro-F1 0.9346
+Epoch 97: mean loss 0.4041, validation macro-F1 0.9364
+Epoch 98: mean loss 0.4031, validation macro-F1 0.9337
+Epoch 99: mean loss 0.4038, validation macro-F1 0.9374
+Epoch 100: mean loss 0.4040, validation macro-F1 0.9369
+Seconds: 1691.9
+Peak memory: 1942.6MB GPU
+Checkpoint: outputs/stage1-lora-r4-50
+Hugging Face repo: HammadHARahim/urdu-headline-stage1-lora-r4-50
+The Hub repo is private. The training corpus is non-commercial research.
+
+Best validation point: epoch 56, validation macro-F1 0.9395, mean training loss 0.4202.
+Epoch 100 scored validation macro-F1 0.9369 and did not replace that best.
+The kept full-model score remains 0.9466 on HammadHARahim/urdu-headline-stage1-warmup.
+The best adapter is on HammadHARahim/urdu-headline-stage1-lora-r4-50.

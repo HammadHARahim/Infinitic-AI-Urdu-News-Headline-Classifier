@@ -1,0 +1,14 @@
+Stage 1 frozen-encoder baseline. The test split was not read.
+Device: Tesla T4
+Encoder: frozen. Only the new classifier was updated.
+Trainable parameters: 593668
+Total parameters: 278046724
+Learning rate: 0.001
+Batch size: 32
+Epochs completed: 2
+Best epoch: 1
+Validation macro-F1: 0.8538
+Seconds: 339.8
+Peak memory: 1138.2MB GPU
+Checkpoint: outputs/stage1-frozen-t4/classifier.pt
+The checkpoint stores the trained classifier. The encoder is xlm-roberta-base.

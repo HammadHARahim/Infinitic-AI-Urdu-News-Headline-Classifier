@@ -1,0 +1,24 @@
+Stage 1 full fine-tune on a T4 for 9 epochs. The test split was not read.
+Device: Tesla T4
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Learning rate: 2e-05
+Batch size: 32
+Epochs completed: 5
+Best epoch: 4
+Validation macro-F1: 0.9417
+Epoch 1: mean loss 0.2700, validation macro-F1 0.9293
+Epoch 2: mean loss 0.1675, validation macro-F1 0.9299
+Epoch 3: mean loss 0.1343, validation macro-F1 0.9416
+Epoch 4: mean loss 0.1104, validation macro-F1 0.9417
+Epoch 5: mean loss 0.0980, validation macro-F1 0.9406
+Seconds: 3458.7
+Peak memory: 5354.9MB GPU
+Checkpoint: HammadHARahim/urdu-headline-stage1-full-t4-9epochs
+Hugging Face repo: https://huggingface.co/HammadHARahim/urdu-headline-stage1-full-t4-9epochs
+The Hub repo is private. The training corpus is non-commercial research.
+The run stopped during epoch 6 when the Colab connection was lost.
+Epochs 6, 7, 8, and 9 were not scored.
+The weight file was not uploaded. The Hub repo contains the score log only.
+A later retry uploaded epoch 1 weights into that same repo. Those weights score 0.9293. They are not the epoch 4 checkpoint.

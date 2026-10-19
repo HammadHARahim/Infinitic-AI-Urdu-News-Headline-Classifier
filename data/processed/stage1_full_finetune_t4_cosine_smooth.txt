@@ -1,0 +1,71 @@
+Stage 1 full fine-tune on a T4 from xlm-roberta-base with cosine decay and label smoothing.
+The test split was not read.
+The one change from the kept cosine run is label smoothing 0.1.
+Schedule: linear warmup for 10% of planned steps, then half-cosine decay to zero.
+The cosine run peaked at validation macro-F1 0.9481.
+Epochs 21 onward use a constant learning rate of 2e-6.
+The cosine curve had already reached nearly zero, so those epochs do not stretch that curve.
+Device: Tesla T4
+Runtime: Kaggle
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Peak learning rate: 2e-05
+Weight decay: 0.01
+Label smoothing: 0.1
+Loss: cross-entropy with label smoothing
+Batch size: 32
+Planned epochs: 60
+Planned steps: 55980
+Warmup steps: 5598
+Epochs completed: 38
+Best epoch: 36
+Validation macro-F1: 0.9466
+Epoch 1: mean loss 0.6765, validation macro-F1 0.9166
+Epoch 2: mean loss 0.4912, validation macro-F1 0.9303
+Epoch 3: mean loss 0.4627, validation macro-F1 0.9340
+Epoch 4: mean loss 0.4409, validation macro-F1 0.9370
+Epoch 5: mean loss 0.4251, validation macro-F1 0.9359
+Epoch 6: mean loss 0.4134, validation macro-F1 0.9380
+Epoch 7: mean loss 0.4030, validation macro-F1 0.9402
+Epoch 8: mean loss 0.3933, validation macro-F1 0.9376
+Epoch 9: mean loss 0.3882, validation macro-F1 0.9431
+Epoch 10: mean loss 0.3796, validation macro-F1 0.9425
+Epoch 11: mean loss 0.3741, validation macro-F1 0.9375
+Epoch 12: mean loss 0.3692, validation macro-F1 0.9409
+Epoch 13: mean loss 0.3661, validation macro-F1 0.9426
+Epoch 14: mean loss 0.3635, validation macro-F1 0.9426
+Epoch 15: mean loss 0.3607, validation macro-F1 0.9433
+Epoch 16: mean loss 0.3591, validation macro-F1 0.9437
+Epoch 17: mean loss 0.3583, validation macro-F1 0.9435
+Epoch 18: mean loss 0.3571, validation macro-F1 0.9449
+Epoch 19: mean loss 0.3570, validation macro-F1 0.9439
+Epoch 20: mean loss 0.3567, validation macro-F1 0.9446
+Epoch 21: mean loss 0.3568, validation macro-F1 0.9449
+Epoch 22: mean loss 0.3566, validation macro-F1 0.9458
+Epoch 23: mean loss 0.3562, validation macro-F1 0.9444
+Epoch 24: mean loss 0.3557, validation macro-F1 0.9459
+Epoch 25: mean loss 0.3556, validation macro-F1 0.9454
+Epoch 26: mean loss 0.3551, validation macro-F1 0.9430
+Epoch 27: mean loss 0.3551, validation macro-F1 0.9436
+Epoch 28: mean loss 0.3551, validation macro-F1 0.9438
+Epoch 29: mean loss 0.3549, validation macro-F1 0.9434
+Epoch 30: mean loss 0.3547, validation macro-F1 0.9451
+Epoch 31: mean loss 0.3546, validation macro-F1 0.9447
+Epoch 32: mean loss 0.3545, validation macro-F1 0.9430
+Epoch 33: mean loss 0.3545, validation macro-F1 0.9455
+Epoch 34: mean loss 0.3543, validation macro-F1 0.9454
+Epoch 35: mean loss 0.3544, validation macro-F1 0.9435
+Epoch 36: mean loss 0.3541, validation macro-F1 0.9466
+Epoch 37: mean loss 0.3544, validation macro-F1 0.9448
+Epoch 38: mean loss 0.3551, validation macro-F1 0.9438
+Seconds: 13765.4
+Peak memory: 5354.9MB GPU
+Checkpoint: outputs/stage1-full-t4-cosine-smooth
+Hugging Face repo: HammadHARahim/urdu-headline-stage1-cosine-smooth
+The Hub repo is private. The training corpus is non-commercial research.
+
+Best validation point so far: epoch 36, validation macro-F1 0.9466, raw score 0.9465591986.
+Has not beaten the kept cosine run at 0.9481.
+Resume session scored through epoch 38 then stopped with CANCEL_ACKNOWLEDGED before epoch 60.
+Checkpoint: HammadHARahim/urdu-headline-stage1-cosine-smooth

@@ -1,0 +1,69 @@
+Stage 1 LoRA rank 4 with label smoothing. The test split was not read.
+The previous rank-4 run scored validation macro-F1 0.9021 at epoch 2.
+The one training change is label smoothing 0.1.
+Early stopping waits 7 epochs for a new best validation macro-F1.
+The 30-epoch cap was reached first. Epoch 30 was a new best, so patience did not fire on that session.
+Seconds for epochs 1 to 30: 10199.9
+Runtime: Kaggle
+Device: Tesla T4
+One of the two attached T4 chips was used. Batch size stayed 32.
+Encoder: frozen. LoRA updates query and value. The classifier is trained.
+LoRA rank: 4
+LoRA alpha: 4
+LoRA dropout: 0.1
+Label smoothing: 0.1
+Early stop patience: 7
+Trainable parameters: 741124
+Total parameters: 278787848
+Learning rate: 0.0001
+Weight decay: 0.01
+Batch size: 32
+Epochs completed: 37
+Best epoch: 30
+Best validation macro-F1: 0.9377
+Epoch 1: mean loss 0.6309, validation macro-F1 0.8960
+Epoch 2: mean loss 0.5548, validation macro-F1 0.9002
+Epoch 3: mean loss 0.5351, validation macro-F1 0.9115
+Epoch 4: mean loss 0.5218, validation macro-F1 0.9123
+Epoch 5: mean loss 0.5121, validation macro-F1 0.9177
+Epoch 6: mean loss 0.5039, validation macro-F1 0.9236
+Epoch 7: mean loss 0.4984, validation macro-F1 0.9241
+Epoch 8: mean loss 0.4929, validation macro-F1 0.9240
+Epoch 9: mean loss 0.4882, validation macro-F1 0.9258
+Epoch 10: mean loss 0.4842, validation macro-F1 0.9262
+Epoch 11: mean loss 0.4801, validation macro-F1 0.9285
+Epoch 12: mean loss 0.4751, validation macro-F1 0.9312
+Epoch 13: mean loss 0.4728, validation macro-F1 0.9305
+Epoch 14: mean loss 0.4690, validation macro-F1 0.9283
+Epoch 15: mean loss 0.4671, validation macro-F1 0.9305
+Epoch 16: mean loss 0.4644, validation macro-F1 0.9327
+Epoch 17: mean loss 0.4628, validation macro-F1 0.9342
+Epoch 18: mean loss 0.4598, validation macro-F1 0.9357
+Epoch 19: mean loss 0.4577, validation macro-F1 0.9333
+Epoch 20: mean loss 0.4563, validation macro-F1 0.9311
+Epoch 21: mean loss 0.4550, validation macro-F1 0.9319
+Epoch 22: mean loss 0.4541, validation macro-F1 0.9319
+Epoch 23: mean loss 0.4516, validation macro-F1 0.9337
+Epoch 24: mean loss 0.4502, validation macro-F1 0.9362
+Epoch 25: mean loss 0.4488, validation macro-F1 0.9326
+Epoch 26: mean loss 0.4482, validation macro-F1 0.9350
+Epoch 27: mean loss 0.4462, validation macro-F1 0.9349
+Epoch 28: mean loss 0.4446, validation macro-F1 0.9339
+Epoch 29: mean loss 0.4433, validation macro-F1 0.9328
+Epoch 30: mean loss 0.4420, validation macro-F1 0.9377
+Epoch 31: mean loss 0.4395, validation macro-F1 0.9372
+Epoch 32: mean loss 0.4397, validation macro-F1 0.9366
+Epoch 33: mean loss 0.4380, validation macro-F1 0.9359
+Epoch 34: mean loss 0.4363, validation macro-F1 0.9366
+Epoch 35: mean loss 0.4358, validation macro-F1 0.9355
+Epoch 36: mean loss 0.4346, validation macro-F1 0.9372
+Epoch 37: mean loss 0.4338, validation macro-F1 0.9359
+The 30-epoch cap was raised to 60 and training resumed from the epoch-30 adapter.
+Epochs 31 to 37 did not beat 0.9377.
+Early stopping fired after 7 epochs with no new best.
+Continuation seconds: 2351.3
+Peak memory: 1929.6MB GPU
+This score beat the previous LoRA rank-4 score of 0.9021.
+It did not beat the kept full-model score of 0.9466.
+The adapter is on HammadHARahim/urdu-headline-stage1-lora-r4-smooth.
+The kept full-model checkpoint remains HammadHARahim/urdu-headline-stage1-warmup.

@@ -1,0 +1,9 @@
+Stage 1 full fine-tune continued from epoch 3 at learning rate 1e-5. The test split was not read.
+Epochs 1 to 3 were trained at learning rate 2e-5. Their best validation macro-F1 is 0.9416.
+Epoch 4: mean loss 0.0774, validation macro-F1 0.9400
+Epoch 5: mean loss 0.0563, validation macro-F1 0.9370
+Epoch 6: mean loss 0.0382, validation macro-F1 0.9350
+Best epoch of this learning rate: 4
+Best validation macro-F1 at 1e-5: 0.9400
+The 1e-5 epochs did not beat epoch 3. The kept weights remain the epoch 3 checkpoint.
+The run was stopped during epoch 7 so the learning rate can change.

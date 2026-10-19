@@ -1,0 +1,12 @@
+Stage 1 leakage check. Test labels are stored in stage1_test.csv and are not listed here.
+Train rows: 89537
+Validation rows: 11071
+Test rows: 11252
+Normalized headlines that appear in more than one split: 0
+URLs that appear in more than one split: 0
+
+Validation rows per label:
+sports: 4463
+entertainment: 3451
+business: 2381
+technology: 776

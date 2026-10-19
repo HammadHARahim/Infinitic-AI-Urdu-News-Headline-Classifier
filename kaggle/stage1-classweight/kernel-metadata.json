@@ -1,0 +1,17 @@
+{
+  "id": "hammadrahim/stage1-classweight",
+  "title": "stage1-classweight",
+  "code_file": "run_classweight.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "hammadrahim/stage1-wd0p1-files"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

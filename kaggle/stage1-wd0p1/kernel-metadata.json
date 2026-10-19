@@ -1,0 +1,15 @@
+{
+  "id": "hammadrahim/stage1-wd0p1",
+  "title": "stage1-wd0p1",
+  "code_file": "run_wd0p1.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": ["hammadrahim/stage1-wd0p1-files"],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

@@ -1,0 +1,22 @@
+Stage 1 full fine-tune on a T4. The test split was not read.
+Device: Tesla T4
+Encoder: trained. The full model was updated.
+Trainable parameters: 278046724
+Total parameters: 278046724
+Learning rate: 2e-05
+Batch size: 32
+Epochs completed: 2
+Epoch 1 mean loss: 0.2700
+Epoch 1 validation macro-F1: 0.9293
+Best epoch: not copied back
+Validation macro-F1 of the saved checkpoint: not copied back
+Seconds: not copied back
+Peak memory: not copied back
+Checkpoint: HammadHARahim/urdu-headline-stage1-full-t4
+Hugging Face repo: https://huggingface.co/HammadHARahim/urdu-headline-stage1-full-t4
+The Hub repo is private. The training corpus is non-commercial research.
+The weight file model.safetensors is 1112211160 bytes.
+The Hub commit time is 2026-10-13 17:21:52 UTC.
+The local training log stopped at epoch 2 batch 2700 because the Colab connection stalled.
+The upload runs only after both epochs and after the best epoch is loaded, so both epochs finished on the T4.
+The T4 session is stopped. The compute balance is 0.00.
