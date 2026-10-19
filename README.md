@@ -25,21 +25,23 @@ politics, health, and world news after a second licensed source is cleared.
 
 ## Current kept recipe (Stage 1, Track B)
 
-Full fine-tune of `xlm-roberta-base`:
+Full fine-tune of `xlm-roberta-base` — the overall best validation run so far:
 
 | Setting | Value |
 | --- | --- |
-| Schedule | Linear warmup 10% of 20-epoch cosine steps, half-cosine decay to ~0, then constant **2e-6** |
+| Schedule | Warmup 10% of a **20-epoch** half-cosine, then constant **2e-6** from epoch 21 |
 | Peak learning rate | **2e-5** |
 | Weight decay | **0.01** |
 | Loss | Unweighted cross-entropy (no label smoothing) |
 | Batch size / max length / seed | **32** / **64** / **42** |
-| Best validation macro-F1 | **0.9481** (epoch 46) |
-| Checkpoint | private Hub `HammadHARahim/urdu-headline-stage1-cosine` |
+| Planned epochs | **50** |
+| Epochs completed | **48** (session stopped before 50) |
+| Best epoch | **46** |
+| Best validation macro-F1 | **0.9481** |
+| Checkpoint | Hub `HammadHARahim/urdu-headline-stage1-cosine` (private weights) |
 
 Label smoothing 0.1, weight decay 0.1, and class-weighted loss were tried as
-sole changes and did **not** beat the kept score, so they stay out of the
-recipe.
+sole changes and did **not** beat 0.9481, so they stay out of the recipe.
 
 ## Results report (validation macro-F1)
 
@@ -53,26 +55,51 @@ selection.
 | Majority (train majority = sports) | 0.1437 |
 | TF-IDF + logistic regression | 0.9230 |
 
-### Track B ladder (selected scores)
+### Epoch log (main Track B runs)
 
-| Run | Strategy | Val macro-F1 | Notes |
-| --- | --- | ---: | --- |
-| Frozen encoder | classifier only | 0.8538 | T4, 2 epochs |
-| Full fine-tune (A100, short) | full | 0.9257 | 2 epochs |
-| LoRA rank 4 / 8 / 16 | LoRA | 0.9021 / 0.9042 / 0.9120 | 2-epoch ladder rows |
-| Full T4, longer LR sweep | full | 0.9449 | best early constant-LR peak |
-| Warmup + linear decay | full | 0.9466 | epoch 19 |
-| **Cosine + 2e-6 continuation** | **full** | **0.9481** | **kept best, epoch 46** |
-| Cosine + label smoothing 0.1 | full | 0.9466 | did not beat 0.9481 |
-| LoRA r4 + smoothing (long) | LoRA | 0.9395 | best LoRA so far; below full model |
+`Epochs scored` = how many full epochs finished and wrote a validation score.
+`Best epoch` = epoch with the highest validation macro-F1 in that run.
+
+| Run | Epochs scored | Best epoch | Val macro-F1 | Notes |
+| --- | ---: | ---: | ---: | --- |
+| Frozen encoder (T4) | 2 | 1 | 0.8538 | Encoder frozen |
+| Full fine-tune (A100) | 2 | 2 | 0.9257 | Short baseline |
+| LoRA rank 4 | 2 | 2 | 0.9021 | Ladder row |
+| LoRA rank 8 | 2 | 2 | 0.9042 | Ladder row |
+| LoRA rank 16 | 2 | 2 | 0.9120 | Ladder row |
+| Full T4 (early long runs) | 5 | 4 | 0.9417 | Planned 9; stopped mid-run |
+| Full T4 (20-epoch attempt) | 5 | 3 | 0.9416 | Session closed early |
+| Full T4, LR 5e-6 | 9 | 4 | 0.9449 | Early constant-LR peak |
+| Full T4, weight decay 0.1 | 15 | 19* | 0.9407 | Did not beat 0.9449 |
+| Full T4, class weights | 5 | 5 | 0.9430 | Did not beat 0.9449 |
+| Warmup + linear decay | **20** | **19** | **0.9466** | Previous kept best |
+| LoRA r4 + label smoothing | 37 | 30 | 0.9377 | Early stop after 7 flat epochs |
+| Full model, LR 1e-4 + smoothing | 5 | — | 0.1437 | Collapsed to majority |
+| LoRA r4 + smoothing (long) | **100** | **56** | **0.9395** | Best LoRA; still below full model |
+| LoRA rank 8 (30 epochs) | 30 | 26 | 0.9377 | Below best LoRA |
+| **Cosine + 2e-6 continuation** | **48** | **46** | **0.9481** | **Kept overall best** (planned 50) |
+| Cosine + label smoothing 0.1 | **38** | **36** | **0.9466** | Planned 60; did not beat 0.9481 |
+
+\* Weight-decay run notes refer to resumed epoch numbering from an earlier
+checkpoint; see `data/processed/stage1_full_finetune_t4_wd0p1.txt`.
+
+### Headline comparison
+
+| | Warmup + linear | Cosine (kept) | Cosine + smoothing |
+| --- | ---: | ---: | ---: |
+| Epochs scored | 20 | **48** | 38 |
+| Best epoch | 19 | **46** | 36 |
+| Val macro-F1 | 0.9466 | **0.9481** | 0.9466 |
+| Beat previous kept? | yes (vs 0.9449) | **yes (vs 0.9466)** | no |
 
 Full run log: [`experiments/registry.csv`](experiments/registry.csv).  
 Per-run text reports: `data/processed/stage1_*.txt`.
 
 ### Status
 
-- Track B Stage 1 ladder is active. Next unused skill-list items after the
-  current cosine+smoothing resume: **input max length** and **model comparison**.
+- Track B Stage 1 ladder is active. Cosine+smoothing was resumed toward 60
+  epochs and has scored through **38** so far.
+- Next unused skill-list items: **input max length** and **model comparison**.
 - Track A (from scratch) has not started.
 - No finalist declared. **No test scores.**
 
