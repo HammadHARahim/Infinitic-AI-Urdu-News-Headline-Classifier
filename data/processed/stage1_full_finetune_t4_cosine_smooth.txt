@@ -18,7 +18,7 @@ Batch size: 32
 Planned epochs: 60
 Planned steps: 55980
 Warmup steps: 5598
-Epochs completed: 38
+Epochs completed: 60
 Best epoch: 36
 Validation macro-F1: 0.9466
 Epoch 1: mean loss 0.6765, validation macro-F1 0.9166
@@ -59,13 +59,35 @@ Epoch 35: mean loss 0.3544, validation macro-F1 0.9435
 Epoch 36: mean loss 0.3541, validation macro-F1 0.9466
 Epoch 37: mean loss 0.3544, validation macro-F1 0.9448
 Epoch 38: mean loss 0.3551, validation macro-F1 0.9438
-Seconds: 13765.4
+Epoch 39: mean loss 0.3550, validation macro-F1 0.9464
+Epoch 40: mean loss 0.3535, validation macro-F1 0.9449
+Epoch 41: mean loss 0.3536, validation macro-F1 0.9452
+Epoch 42: mean loss 0.3536, validation macro-F1 0.9450
+Epoch 43: mean loss 0.3550, validation macro-F1 0.9464
+Epoch 44: mean loss 0.3535, validation macro-F1 0.9449
+Epoch 45: mean loss 0.3536, validation macro-F1 0.9452
+Epoch 46: mean loss 0.3536, validation macro-F1 0.9450
+Epoch 47: mean loss 0.3534, validation macro-F1 0.9457
+Epoch 48: mean loss 0.3531, validation macro-F1 0.9447
+Epoch 49: mean loss 0.3531, validation macro-F1 0.9442
+Epoch 50: mean loss 0.3531, validation macro-F1 0.9442
+Epoch 51: mean loss 0.3527, validation macro-F1 0.9435
+Epoch 52: mean loss 0.3528, validation macro-F1 0.9448
+Epoch 53: mean loss 0.3527, validation macro-F1 0.9445
+Epoch 54: mean loss 0.3526, validation macro-F1 0.9418
+Epoch 55: mean loss 0.3526, validation macro-F1 0.9418
+Epoch 56: mean loss 0.3528, validation macro-F1 0.9433
+Epoch 57: mean loss 0.3526, validation macro-F1 0.9434
+Epoch 58: mean loss 0.3527, validation macro-F1 0.9430
+Epoch 59: mean loss 0.3527, validation macro-F1 0.9451
+Epoch 60: mean loss 0.3537, validation macro-F1 0.9419
+Seconds: 12965.8
 Peak memory: 5354.9MB GPU
 Checkpoint: outputs/stage1-full-t4-cosine-smooth
 Hugging Face repo: HammadHARahim/urdu-headline-stage1-cosine-smooth
 The Hub repo is private. The training corpus is non-commercial research.
 
-Best validation point so far: epoch 36, validation macro-F1 0.9466, raw score 0.9465591986.
-Has not beaten the kept cosine run at 0.9481.
-Resume session scored through epoch 38 then stopped with CANCEL_ACKNOWLEDGED before epoch 60.
+Best validation point: epoch 36, validation macro-F1 0.9466, raw score 0.9465591986.
+Did not beat the kept cosine run at 0.9481.
+Run completed all 60 planned epochs. Epoch 60 scored 0.9419.
 Checkpoint: HammadHARahim/urdu-headline-stage1-cosine-smooth

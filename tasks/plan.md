@@ -53,7 +53,7 @@ Stage 1 prepares Urdu News Dataset 1M for a later four-class fine-tune. The down
 - [ ] Task 5 ladder: LoRA rank 8 for 30 epochs, same settings, new adapter: 30 epochs scored, best validation macro-F1 0.9377 at epoch 26; did not beat 0.9395 or 0.9466 (`data/processed/stage1_lora_r8_30.txt`)
 - [ ] Task 5 ladder: LoRA rank 16, same settings as the rank-4 ladder run: 2 epochs scored, best validation macro-F1 0.9120 at epoch 2; beat rank 4 at 0.9021 and rank 8 at 0.9042; did not beat 0.9466 (`data/processed/stage1_lora_r16_t4.txt`)
 - [ ] Task 5 ladder: full fine-tune with half-cosine decay then constant 2e-6: 48 epochs scored, best validation macro-F1 0.9481 at epoch 46; beat linear warmup 0.9466; session stopped after epoch 48 (`data/processed/stage1_full_finetune_t4_cosine.txt`)
-- [ ] Task 5 ladder: kept cosine recipe with label smoothing 0.1 as the one change: 38 epochs scored, best validation macro-F1 0.9466 at epoch 36; did not beat 0.9481; auto-resuming until epoch 60 (`notebooks/stage1_full_finetune_t4_cosine_smooth.py`)
+- [ ] Task 5 ladder: kept cosine recipe with label smoothing 0.1 as the one change: 60 epochs scored, best validation macro-F1 0.9466 at epoch 36; did not beat 0.9481 (`data/processed/stage1_full_finetune_t4_cosine_smooth.txt`)
 
 Fine-tuning is Task 5. It does not start in the data phase.
 

@@ -78,7 +78,7 @@ selection.
 | LoRA r4 + smoothing (long) | **100** | **56** | **0.9395** | Best LoRA; still below full model |
 | LoRA rank 8 (30 epochs) | 30 | 26 | 0.9377 | Below best LoRA |
 | **Cosine + 2e-6 continuation** | **48** | **46** | **0.9481** | **Kept overall best** (planned 50) |
-| Cosine + label smoothing 0.1 | **38** | **36** | **0.9466** | Planned 60; did not beat 0.9481 |
+| Cosine + label smoothing 0.1 | **60** | **36** | **0.9466** | Completed planned 60; did not beat 0.9481 |
 
 \* Weight-decay run notes refer to resumed epoch numbering from an earlier
 checkpoint; see `data/processed/stage1_full_finetune_t4_wd0p1.txt`.
@@ -87,7 +87,7 @@ checkpoint; see `data/processed/stage1_full_finetune_t4_wd0p1.txt`.
 
 | | Warmup + linear | Cosine (kept) | Cosine + smoothing |
 | --- | ---: | ---: | ---: |
-| Epochs scored | 20 | **48** | 38 |
+| Epochs scored | 20 | **48** | **60** |
 | Best epoch | 19 | **46** | 36 |
 | Val macro-F1 | 0.9466 | **0.9481** | 0.9466 |
 | Beat previous kept? | yes (vs 0.9449) | **yes (vs 0.9466)** | no |
@@ -97,8 +97,8 @@ Per-run text reports: `data/processed/stage1_*.txt`.
 
 ### Status
 
-- Track B Stage 1 ladder is active. Cosine+smoothing was resumed toward 60
-  epochs and has scored through **38** so far.
+- Track B Stage 1 ladder is active. Cosine+smoothing finished all **60**
+  epochs; best remains **0.9466** (below kept **0.9481**).
 - Next unused skill-list items: **input max length** and **model comparison**.
 - Track A (from scratch) has not started.
 - No finalist declared. **No test scores.**
