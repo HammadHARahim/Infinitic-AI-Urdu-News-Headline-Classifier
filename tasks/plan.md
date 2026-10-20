@@ -61,6 +61,12 @@ Fine-tuning is Task 5. It does not start in the data phase.
 
 The ladder changes one setting at a time. A setting joins the final recipe only when its own run beats the kept validation macro-F1.
 
-When the ladder is finished, train once more from `xlm-roberta-base` with that winning combination. That run is the finalist candidate. The test split stays sealed until the finalist is declared, and it is scored only once.
+### Deadline wrap-up (20 October 2026)
 
-The kept full-model recipe so far is the cosine run: full fine-tune, linear warmup for 10% of steps then half-cosine decay for 20 epochs, then constant learning rate 2e-6, weight decay 0.01, unweighted cross-entropy, batch size 32, max length 64, seed 42. Best epoch 46, validation macro-F1 0.9481, checkpoint `HammadHARahim/urdu-headline-stage1-cosine`. The earlier linear warmup run peaked at 0.9466. Weight decay 0.1, class-weighted loss, and label smoothing 0.1 did not beat the scores they were tested against, so they stay out unless a later run wins.
+- [x] Declare Stage 1 Track B finalist: kept cosine checkpoint (validation macro-F1 0.9481, epoch 46)
+- [x] Score the sealed test split once: test macro-F1 0.9384 (`data/processed/stage1_finalist_test.txt`)
+- [x] Update README and registry with the test score
+
+Fresh fine-tune from `xlm-roberta-base` with only winning settings was the preferred finalist job (ADR-001). It was skipped on the deadline because Kaggle GPU quota was 0.00h. The kept cosine Hub checkpoint is the delivered finalist.
+
+The kept full-model recipe is the cosine run: full fine-tune, linear warmup for 10% of steps then half-cosine decay for 20 epochs, then constant learning rate 2e-6, weight decay 0.01, unweighted cross-entropy, batch size 32, max length 64, seed 42. Best epoch 46, validation macro-F1 0.9481, checkpoint `HammadHARahim/urdu-headline-stage1-cosine`. Weight decay 0.1, class-weighted loss, and label smoothing 0.1 did not beat the scores they were tested against, so they stay out.

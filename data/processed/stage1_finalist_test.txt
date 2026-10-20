@@ -1,0 +1,30 @@
+Stage 1 Track B finalist test evaluation. Deadline wrap-up 20 October 2026.
+Finalist checkpoint: HammadHARahim/urdu-headline-stage1-cosine
+This is the kept cosine run, best validation epoch 46, validation macro-F1 0.9481.
+A fresh fine-tune from xlm-roberta-base was not run: Kaggle GPU quota was 0.00h.
+The test split was read only for this declared finalist evaluation.
+Device: cpu
+Test headlines: 11252
+Batch size: 16
+Max length: 64
+Test macro-F1: 0.9384
+Seconds: 392.2
+
+Per-label report:
+               precision    recall  f1-score   support
+
+       sports     0.9778    0.9810    0.9794      4531
+     business     0.9618    0.9754    0.9686      2401
+entertainment     0.9533    0.9360    0.9446      3531
+   technology     0.8532    0.8695    0.8613       789
+
+     accuracy                         0.9579     11252
+    macro avg     0.9365    0.9405    0.9384     11252
+ weighted avg     0.9579    0.9579    0.9579     11252
+
+Confusion matrix rows=true labels, columns=predicted labels.
+Label order: sports, business, entertainment, technology
+4445 11 70 5
+10 2342 27 22
+83 52 3305 91
+8 30 65 686
