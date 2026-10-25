@@ -159,7 +159,7 @@ def card4_external_context():
         draw.text((60, y), line, font=font(23), fill=MUTED)
         y += 32
 
-    # comparison cards
+    # comparison cards — wrap body text so nothing spills past the box edge
     panels = [
         (
             "Infinitic AI (this project)",
@@ -168,7 +168,7 @@ def card4_external_context():
                 "Corpus: Urdu News Dataset 1M",
                 "Test macro-F1: 0.9384",
                 "Test accuracy: 95.79%",
-                "Process: sealed test, experiment ladder",
+                "Process: sealed test + experiment ladder",
             ],
             GREEN,
         ),
@@ -184,15 +184,33 @@ def card4_external_context():
             AMBER,
         ),
     ]
+    panel_w = 460
+    panel_pad = 28
+    inner_w = panel_w - (panel_pad * 2)
+    body_font = font(21)
+    title_font = font(23, True)
     x = 60
     for title, lines, accent in panels:
-        draw.rounded_rectangle([x, 310, x + 460, 820], radius=18, fill=WHITE, outline=RULE, width=2)
-        draw.rectangle([x, 310, x + 460, 330], fill=accent)
-        draw.text((x + 24, 360), title, font=font(24, True), fill=INK)
-        yy = 420
+        draw.rounded_rectangle([x, 310, x + panel_w, 820], radius=18, fill=WHITE, outline=RULE, width=2)
+        draw.rectangle([x, 310, x + panel_w, 330], fill=accent)
+        title_y = 350
+        for title_line in wrap(draw, title, title_font, inner_w):
+            draw.text((x + panel_pad, title_y), title_line, font=title_font, fill=INK)
+            title_y += 30
+        yy = max(title_y + 18, 410)
         for line in lines:
-            draw.text((x + 24, yy), "•  " + line, font=font(22), fill=MUTED)
-            yy += 48
+            # Wrap the full drawn string so the bullet prefix cannot overflow the box.
+            wrapped = wrap(draw, "•  " + line, body_font, inner_w)
+            for i, part in enumerate(wrapped):
+                if i > 0 and not part.startswith("•"):
+                    part = "   " + part.lstrip()
+                draw.text((x + panel_pad, yy), part, font=body_font, fill=MUTED)
+                # hard assert for layout QA
+                right_edge = x + panel_pad + draw.textlength(part, font=body_font)
+                if right_edge > x + panel_w - panel_pad + 1:
+                    raise SystemExit(f"overflow in card4: {part!r} ends at {right_edge}")
+                yy += 32
+            yy += 12
         x += 500
 
     draw.text((60, 860), "*John Snow Labs Spark NLP model card (classifierdl_bert_news, Urdu).", font=font(20), fill=MUTED)
