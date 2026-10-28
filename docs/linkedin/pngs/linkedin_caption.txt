@@ -1,21 +1,22 @@
-Infinitic AI — Urdu News Headline Classifier (Stage 1)
+Infinitic AI — Urdu News Headline Classifier
 
-We fine-tuned XLM-RoBERTa for 4-class Urdu news category routing on the Urdu News Dataset 1M research corpus.
+At Infinitic AI, we admire quality engineering: sealed tests, one change at a time, and results we can stand behind — not vanity metrics.
 
-Results (held-out test, scored once):
+We fine-tuned XLM-RoBERTa to route Urdu news headlines into 4 categories: sports, business, entertainment, and technology.
+
+Held-out test results (scored once):
 • Test macro-F1: 0.9384
 • Test accuracy: 95.79%
 • 11,252 sealed test headlines
 
-Same-split baselines we beat:
+On the same split, we beat:
 • Majority → 0.1437
 • TF-IDF + logistic → 0.9230
 • Best LoRA (val) → 0.9395
 • Our finalist (val) → 0.9481
 
-Public context (different datasets/labels — not identical eval):
-• Spark NLP’s public Urdu news classifier reports ~0.75 macro-F1 / ~0.82 accuracy on a 7-class mix. Our Stage 1 system is a focused 4-class production path with a sealed-test protocol.
+Built for media ops, newsrooms, and Urdu content platforms that need reliable auto-tagging.
 
-What we offer clients: measurable Urdu content tagging, experiment discipline, and a clear roadmap to more labels once licensed data is in place.
+Swipe for the full breakdown →
 
-#InfiniticAI #UrduNLP #AI #MachineLearning #NewsTech #LowResourceNLP
+#InfiniticAI #UrduNLP #AI #MachineLearning #NewsTech #QualityEngineering #LowResourceNLP

@@ -38,3 +38,6 @@ Thumbs.db
 # Temporary training staging
 /tmp/
 *.log
+
+# Local ONNX export scratch
+artifacts/
