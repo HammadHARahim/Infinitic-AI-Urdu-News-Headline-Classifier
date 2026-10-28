@@ -155,3 +155,21 @@ business 24,131, technology 7,999.
 Space UI files live in `docs/hf_space_static/` and sync to the Space on push
 to `main` via `.github/workflows/sync-hf-space.yml` (uploads UI only; does not
 delete Space-hosted `/models`).
+
+## Streamlit and Vercel
+
+| App | Path | Deploy notes |
+| --- | --- | --- |
+| Streamlit | `apps/streamlit/` | Community Cloud entrypoint: `apps/streamlit/app.py` |
+| Vercel | `apps/vercel/` | Static browser demo; Root Directory = `apps/vercel` |
+
+Full steps: [`docs/DEPLOY.md`](docs/DEPLOY.md).
+
+## Streamlit and Vercel demos
+
+| App | Path | Deploy notes |
+| --- | --- | --- |
+| Streamlit | `apps/streamlit/app.py` | Community Cloud entrypoint; ONNX Runtime + Hub weights |
+| Vercel | `apps/vercel/` | Static Transformers.js UI; Hub chunked downloads |
+
+Full steps: [`docs/DEPLOY.md`](docs/DEPLOY.md).

@@ -1,0 +1,10 @@
+{
+  "name": "infinitic-urdu-headline-classifier",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Browser demo for Infinitic AI Urdu news headline classification",
+  "scripts": {
+    "dev": "npx serve public -l 3000",
+    "start": "npx serve public -l 3000"
+  }
+}
