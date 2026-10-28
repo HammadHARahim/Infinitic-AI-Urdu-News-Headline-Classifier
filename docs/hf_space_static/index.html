@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Infinitic AI — Urdu Headline Classifier</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --ink: #162030;
+      --muted: #5a687a;
+      --accent: #144a78;
+      --green: #246e4e;
+      --card: #ffffff;
+      --rule: #d2dae4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    .brand {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.25;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 0 0 24px;
+      line-height: 1.5;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    textarea {
+      width: 100%;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 16px;
+      min-height: 110px;
+      resize: vertical;
+      direction: rtl;
+    }
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 6px 0 0;
+      line-height: 1.4;
+    }
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    .primary { background: var(--accent); color: white; }
+    .ghost { background: #eef2f6; color: var(--ink); }
+    .examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .chip {
+      border: 1px solid var(--rule);
+      background: white;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      direction: rtl;
+    }
+    .status { color: var(--muted); min-height: 24px; margin-top: 10px; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 70px;
+      gap: 10px;
+      align-items: center;
+      margin: 8px 0;
+    }
+    .track {
+      background: #e8eef5;
+      border-radius: 999px;
+      height: 12px;
+      overflow: hidden;
+    }
+    .fill { height: 12px; width: 0%; }
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">INFINITIC AI</div>
+    <h1>Urdu News Headline Classifier</h1>
+    <p class="sub">
+      Stage 1 demo for sports, business, entertainment, and technology.
+      Model:
+      <a href="https://huggingface.co/HammadHARahim/urdu-headline-stage1-cosine" target="_blank" rel="noopener">urdu-headline-stage1-cosine</a>.
+      Test macro-F1 0.9384 · accuracy 95.79%.
+      Runs entirely in your browser (no Hugging Face token).
+    </p>
+
+    <div class="card">
+      <label for="headline">Urdu news headline</label>
+      <textarea id="headline" placeholder="Urdu headline here"></textarea>
+      <div class="row">
+        <button class="primary" id="runBtn" type="button" disabled>Loading model…</button>
+        <button class="ghost" id="clearBtn" type="button">Clear</button>
+      </div>
+      <div class="examples" id="examples"></div>
+      <p class="hint" id="loadHint">
+        First visit downloads ~279&nbsp;MB as small chunks with automatic retries (large single-file downloads were failing around 80%).
+      </p>
+      <div class="status" id="status">Preparing browser runtime… <!-- chunk-retry-v2 --></div>
+    </div>
+
+    <div class="card">
+      <strong>Prediction</strong>
+      <div id="summary" class="status">Waiting for a headline…</div>
+      <div id="bars"></div>
+    </div>
+
+    <p class="footer">
+      Built by Infinitic AI.
+      Code:
+      <a href="https://github.com/HammadHARahim/Infinitic-AI-Urdu-News-Headline-Classifier" target="_blank" rel="noopener">GitHub</a>.
+      Chunked browser download avoids Hugging Face CDN mid-transfer failures.
+    </p>
+  </div>
+
+  <script type="module">
+    import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.2";
+
+    const MODEL = "urdu-headline";
+    const MODEL_ROOT = "/models/urdu-headline/";
+    const LABELS = ["sports", "business", "entertainment", "technology"];
+    const EXAMPLES = [
+      "پاکستان کرکٹ ٹیم نے میچ جیت لیا",
+      "کراچی سٹاک ایکسچینج میں اضافہ",
+      "بالی ووڈ اداکارہ کی نئی فلم ریلیز",
+      "نئی موبائل ٹیکنالوجی کی رونمائی"
+    ];
+    const CHUNK_RETRIES = 8;
+
+    const headlineEl = document.getElementById("headline");
+    const statusEl = document.getElementById("status");
+    const summaryEl = document.getElementById("summary");
+    const barsEl = document.getElementById("bars");
+    const examplesEl = document.getElementById("examples");
+    const runBtn = document.getElementById("runBtn");
+    const loadHint = document.getElementById("loadHint");
+
+    let classifier = null;
+    const fileCache = new Map();
+
+    EXAMPLES.forEach((text) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "chip";
+      chip.textContent = text;
+      chip.onclick = () => { headlineEl.value = text; };
+      examplesEl.appendChild(chip);
+    });
+
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function renderBars(scoreByLabel, bestLabel) {
+      barsEl.innerHTML = "";
+      LABELS.forEach((label) => {
+        const score = scoreByLabel[label] || 0;
+        const row = document.createElement("div");
+        row.className = "bar-row";
+        const color = label === bestLabel ? "#246e4e" : "#144a78";
+        row.innerHTML =
+          "<div>" + label + "</div>" +
+          '<div class="track"><div class="fill" style="width:' + (score * 100).toFixed(1) +
+          "%;background:" + color + '"></div></div>' +
+          "<div>" + (score * 100).toFixed(1) + "%</div>";
+        barsEl.appendChild(row);
+      });
+    }
+
+    function cachePut(localPath, bytes, contentType) {
+      fileCache.set(localPath, new Response(bytes, {
+        status: 200,
+        headers: {
+          "Content-Type": contentType || "application/octet-stream",
+          "Content-Length": String(bytes.byteLength)
+        }
+      }));
+    }
+
+    env.useCustomCache = true;
+    env.useBrowserCache = false;
+    env.customCache = {
+      match: async (request) => {
+        const key = typeof request === "string" ? request : (request && request.url) || String(request);
+        return fileCache.get(key);
+      },
+      put: async (request, response) => {
+        const key = typeof request === "string" ? request : (request && request.url) || String(request);
+        fileCache.set(key, response);
+      }
+    };
+
+    async function fetchBytesWithRetry(url, label, onProgress) {
+      let lastError = null;
+      for (let attempt = 1; attempt <= CHUNK_RETRIES; attempt++) {
+        try {
+          const response = await fetch(url, { cache: "no-store" });
+          if (!response.ok) throw new Error("HTTP " + response.status + " for " + label);
+          const total = Number(response.headers.get("Content-Length") || 0);
+          if (!response.body || !response.body.getReader) {
+            const buffer = new Uint8Array(await response.arrayBuffer());
+            if (onProgress) onProgress(buffer.byteLength, buffer.byteLength);
+            return buffer;
+          }
+          const reader = response.body.getReader();
+          const chunks = [];
+          let loaded = 0;
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            chunks.push(value);
+            loaded += value.byteLength;
+            if (onProgress) onProgress(loaded, total || loaded);
+          }
+          const out = new Uint8Array(loaded);
+          let offset = 0;
+          for (const part of chunks) {
+            out.set(part, offset);
+            offset += part.byteLength;
+          }
+          return out;
+        } catch (err) {
+          lastError = err;
+          statusEl.textContent =
+            "Retry " + attempt + "/" + CHUNK_RETRIES + " · " + label +
+            " · " + (err && err.message ? err.message : String(err));
+          await sleep(700 * attempt);
+        }
+      }
+      throw lastError || new Error("Failed to download " + label);
+    }
+
+    function concatBytes(parts) {
+      let total = 0;
+      for (const part of parts) total += part.byteLength;
+      const out = new Uint8Array(total);
+      let offset = 0;
+      for (const part of parts) {
+        out.set(part, offset);
+        offset += part.byteLength;
+      }
+      return out;
+    }
+
+    async function gunzipToBytes(gzBytes) {
+      if (typeof DecompressionStream === "undefined") {
+        throw new Error("Browser missing DecompressionStream (needed for tokenizer).");
+      }
+      const stream = new Blob([gzBytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+      return new Uint8Array(await new Response(stream).arrayBuffer());
+    }
+
+    function resolveAssetUrl(value) {
+      if (!value) return null;
+      if (/^https?:\/\//i.test(value)) return value;
+      return MODEL_ROOT + value;
+    }
+
+    async function preloadModelFiles() {
+      const manifest = await (await fetch(MODEL_ROOT + "manifest.json?v=" + Date.now())).json();
+      const partUrls = (manifest.model_parts || []).map(resolveAssetUrl);
+      if (!partUrls.length) {
+        throw new Error("manifest.json is missing model_parts");
+      }
+
+      const parts = [];
+      let loadedTotal = 0;
+      const expected = manifest.model_bytes || 0;
+
+      for (let i = 0; i < partUrls.length; i++) {
+        const label = "part " + (i + 1) + "/" + partUrls.length;
+        const bytes = await fetchBytesWithRetry(partUrls[i], label, (loaded, total) => {
+          const overall = loadedTotal + loaded;
+          const pct = expected
+            ? Math.min(99, Math.round((overall / expected) * 100))
+            : Math.round(((i + loaded / Math.max(total, 1)) / partUrls.length) * 100);
+          statusEl.textContent = "Downloading model… " + pct + "% (" + label + ")";
+        });
+        parts.push(bytes);
+        loadedTotal += bytes.byteLength;
+      }
+
+      const modelBytes = concatBytes(parts);
+      if (expected && modelBytes.byteLength !== expected) {
+        throw new Error(
+          "Reassembled model size mismatch: got " + modelBytes.byteLength +
+          ", expected " + expected
+        );
+      }
+      cachePut(MODEL_ROOT + "onnx/model_quantized.onnx", modelBytes);
+
+      statusEl.textContent = "Downloading tokenizer…";
+      const tokGz = await fetchBytesWithRetry(
+        resolveAssetUrl(manifest.tokenizer_gz),
+        "tokenizer",
+        null
+      );
+      cachePut(MODEL_ROOT + "tokenizer.json", await gunzipToBytes(tokGz), "application/json");
+
+      const requiredSideFiles = [
+        ["config.json", manifest.config || (MODEL_ROOT + "config.json")],
+        ["tokenizer_config.json", manifest.tokenizer_config || (MODEL_ROOT + "tokenizer_config.json")]
+      ];
+      for (const [name, url] of requiredSideFiles) {
+        const bytes = await fetchBytesWithRetry(resolveAssetUrl(url), name, null);
+        cachePut(MODEL_ROOT + name, bytes, "application/json");
+      }
+
+      // Optional for XLM-R when tokenizer.json is present.
+      try {
+        const stm = await fetchBytesWithRetry(
+          MODEL_ROOT + "special_tokens_map.json",
+          "special_tokens_map.json",
+          null
+        );
+        cachePut(MODEL_ROOT + "special_tokens_map.json", stm, "application/json");
+      } catch (_err) {
+        // continue without it
+      }
+    }
+
+    async function loadModel() {
+      statusEl.textContent = "Downloading model files in small chunks…";
+      await preloadModelFiles();
+
+      statusEl.textContent = "Starting classifier…";
+      env.allowLocalModels = true;
+      env.allowRemoteModels = false;
+      env.localModelPath = "/models/";
+
+      classifier = await pipeline("text-classification", MODEL, {
+        dtype: "q8"
+      });
+
+      runBtn.disabled = false;
+      runBtn.textContent = "Classify";
+      statusEl.textContent = "Model ready. Paste a headline and click Classify.";
+      loadHint.textContent = "Model is ready in this tab. A full reload may need to re-download.";
+    }
+
+    async function classify() {
+      const text = headlineEl.value.trim();
+      if (!classifier) {
+        statusEl.textContent = "Model is still loading…";
+        return;
+      }
+      if (!text) {
+        statusEl.textContent = "Please paste an Urdu news headline.";
+        return;
+      }
+      runBtn.disabled = true;
+      statusEl.textContent = "Running inference…";
+      summaryEl.textContent = "Loading…";
+      try {
+        const items = await classifier(text, { top_k: null });
+        const scoreByLabel = {};
+        LABELS.forEach((label) => { scoreByLabel[label] = 0; });
+        items.forEach((item) => { scoreByLabel[item.label] = item.score; });
+
+        let bestLabel = LABELS[0];
+        let bestScore = -1;
+        LABELS.forEach((label) => {
+          if (scoreByLabel[label] > bestScore) {
+            bestScore = scoreByLabel[label];
+            bestLabel = label;
+          }
+        });
+        summaryEl.textContent = "Predicted: " + bestLabel + " (" + (bestScore * 100).toFixed(1) + "%)";
+        renderBars(scoreByLabel, bestLabel);
+        statusEl.textContent = "Done.";
+      } catch (err) {
+        statusEl.textContent = "Error: " + (err && err.message ? err.message : String(err));
+        summaryEl.textContent = "Could not classify this headline.";
+        barsEl.innerHTML = "";
+      } finally {
+        runBtn.disabled = false;
+      }
+    }
+
+    document.getElementById("runBtn").onclick = classify;
+    document.getElementById("clearBtn").onclick = () => {
+      headlineEl.value = "";
+      statusEl.textContent = classifier
+        ? "Model ready. Paste a headline and click Classify."
+        : "Preparing browser runtime… <!-- chunk-retry-v2 -->";
+      summaryEl.textContent = "Waiting for a headline…";
+      barsEl.innerHTML = "";
+    };
+
+    loadModel().catch((err) => {
+      statusEl.textContent = "Failed to load model: " + (err && err.message ? err.message : String(err));
+      runBtn.textContent = "Model failed";
+    });
+  </script>
+</body>
+</html>

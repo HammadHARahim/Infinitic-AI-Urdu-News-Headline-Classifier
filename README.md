@@ -144,3 +144,14 @@ business 24,131, technology 7,999.
 - Spec: [`SPEC.md`](SPEC.md)
 - Plan: [`tasks/plan.md`](tasks/plan.md)
 - Finalist ADR: [`docs/decisions/ADR-001-final-finetune-uses-winning-settings.md`](docs/decisions/ADR-001-final-finetune-uses-winning-settings.md)
+
+## Hugging Face
+
+| Resource | URL |
+| --- | --- |
+| Live demo (Static Space) | https://huggingface.co/spaces/HammadHARahim/infinitic-urdu-headline-classifier |
+| Finalist model | https://huggingface.co/HammadHARahim/urdu-headline-stage1-cosine |
+
+Space UI files live in `docs/hf_space_static/` and sync to the Space on push
+to `main` via `.github/workflows/sync-hf-space.yml` (uploads UI only; does not
+delete Space-hosted `/models`).
